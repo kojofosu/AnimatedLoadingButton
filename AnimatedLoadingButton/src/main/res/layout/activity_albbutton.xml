@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ALBButton">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/alb_btn_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/material_design_button_width_min"
+        android:minHeight="@dimen/material_design_button_height_min"
+        android:paddingStart="@dimen/material_design_start_end_padding"
+        android:paddingEnd="@dimen/material_design_start_end_padding"
+        app:cardBackgroundColor="@color/design_default_color_primary"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <TextView
+            android:id="@+id/alb_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_centerInParent="true"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

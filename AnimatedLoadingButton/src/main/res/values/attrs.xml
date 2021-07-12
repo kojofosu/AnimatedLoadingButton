@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ALBView">
+        <attr name="display_text" format="string"/>
+        <attr name="loading_text" format="string"/>
+    </declare-styleable>
+</resources>

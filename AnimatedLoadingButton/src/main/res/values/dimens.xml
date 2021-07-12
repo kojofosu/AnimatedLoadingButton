@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="material_design_button_width_min">64dp</dimen>
+    <dimen name="material_design_button_height_min">36dp</dimen>
+    <dimen name="material_design_start_end_padding">16dp</dimen>
+</resources>
