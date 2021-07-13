@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ALBView">
-        <attr name="display_text" format="string"/>
+        <!--default-->
+        <attr name="default_text" format="string"/>
+        <attr name="default_bg_color" format="color"/>
+        <attr name="default_text_color" format="color"/>
+
+        <!--loading-->
         <attr name="loading_text" format="string"/>
+        <attr name="loading_bg_color" format="color" />
+        <attr name="loading_text_color" format="color" />
+
+        <!--success-->
+        <attr name="success_text" format="string" />
+        <attr name="success_text_color" format="color"/>
+        <attr name="success_bg_color" format="color"/>
+
+        <!--fail-->
+        <attr name="fail_text" format="string"/>
+        <attr name="fail_bg_color" format="color"/>
+        <attr name="fail_text_color" format="color" />
+
+
+
+
+
+
+
     </declare-styleable>
 </resources>

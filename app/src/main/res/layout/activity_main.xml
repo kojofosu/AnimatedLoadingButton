@@ -20,7 +20,7 @@
         android:id="@+id/alb_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:display_text="Sign up"
+        app:default_text="Login"
         app:loading_text="Loading..."
         app:layout_constraintTop_toBottomOf="@+id/tv"
         android:gravity="center"/>
