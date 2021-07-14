@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         alb_btn.setLoadingBgColor(R.color.purple_200)
         alb_btn.setLoadingTextColor(Color.BLACK)
-        alb_btn.setLoadingText("Get in!!!")
+        alb_btn.setLoadingText("Loading...")
 
         btn.setOnClickListener {
             alb_btn.isSuccess()

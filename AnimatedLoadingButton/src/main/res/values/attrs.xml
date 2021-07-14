@@ -16,10 +16,10 @@
         <attr name="success_text_color" format="color"/>
         <attr name="success_bg_color" format="color"/>
 
-        <!--fail-->
-        <attr name="fail_text" format="string"/>
-        <attr name="fail_bg_color" format="color"/>
-        <attr name="fail_text_color" format="color" />
+        <!--error-->
+        <attr name="error_text" format="string"/>
+        <attr name="error_bg_color" format="color"/>
+        <attr name="error_text_color" format="color" />
 
 
 

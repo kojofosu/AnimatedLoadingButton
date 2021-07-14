@@ -38,10 +38,15 @@ class ALBButton @JvmOverloads constructor(context: Context,
     private var mLoadingTextColor: Int
 
     /*success*/
-    private var mButtonSuccessColor: Int = Color.GREEN
+    private var mSuccessText: String? = null
+    private var mSuccessBgColor: Int
+    private var mSuccessTextColor: Int
 
-    /*fail*/
-    private var mButtonErrorColor: Int = Color.RED
+    /*error*/
+    private var mErrorText: String? = null
+    private var mErrorBgColor: Int
+    private var mErrorTextColor: Int
+
 
 
     init {
@@ -61,8 +66,14 @@ class ALBButton @JvmOverloads constructor(context: Context,
         mLoadingTextColor = attributes.getColor(R.styleable.ALBButton_loading_text_color, Color.WHITE)
 
         /*success*/
+        mSuccessText = attributes.getString(R.styleable.ALBButton_success_text)
+        mSuccessBgColor = attributes.getColor(R.styleable.ALBButton_success_bg_color, Color.GREEN)
+        mSuccessTextColor = attributes.getColor(R.styleable.ALBButton_success_text_color, Color.WHITE)
 
-        /*fail*/
+        /*error*/
+        mErrorText = attributes.getString(R.styleable.ALBButton_error_text)
+        mErrorBgColor = attributes.getColor(R.styleable.ALBButton_error_bg_color, Color.RED)
+        mErrorTextColor = attributes.getColor(R.styleable.ALBButton_error_text_color, Color.WHITE)
 
 
         binding.albBtnLayout.setOnClickListener {
@@ -122,7 +133,7 @@ class ALBButton @JvmOverloads constructor(context: Context,
     fun isSuccess() {
         setDefaultText(mDefaultText)
         animateText(Techniques.BounceInUp)
-        changeButtonBgColor(mButtonSuccessColor)
+        changeButtonBgColor(mSuccessBgColor)
         isButtonLoading = false
     }
 
