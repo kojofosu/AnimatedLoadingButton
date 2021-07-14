@@ -67,7 +67,7 @@ class ALBButton @JvmOverloads constructor(context: Context,
 
         /*success*/
         mSuccessText = attributes.getString(R.styleable.ALBButton_success_text)
-        mSuccessBgColor = attributes.getColor(R.styleable.ALBButton_success_bg_color, Color.GREEN)
+        mSuccessBgColor = attributes.getColor(R.styleable.ALBButton_success_bg_color, ContextCompat.getColor(context, R.color.green_500))
         mSuccessTextColor = attributes.getColor(R.styleable.ALBButton_success_text_color, Color.WHITE)
 
         /*error*/
@@ -155,13 +155,30 @@ class ALBButton @JvmOverloads constructor(context: Context,
     }
 
     fun isSuccess() {
-        setDefaultText(mDefaultText)
+        changeButtonText(mSuccessText)
         animateText(Techniques.BounceInUp)
         changeButtonBgColor(mSuccessBgColor)
+        changeButtonTextColor(mSuccessTextColor)
         isButtonLoading = false
+    }
+
+    fun isError() {
+        changeButtonText(mErrorText)
+        animateText(Techniques.BounceInUp)
+        changeButtonBgColor(mErrorBgColor)
+        changeButtonTextColor(mErrorTextColor)
+        isButtonLoading = false
+    }
+
+    private fun changeButtonText(text: String?) {
+        binding.albTv.text = text
     }
 
     private fun changeButtonBgColor(color: Int) {
         binding.albBtnLayout.setCardBackgroundColor(color)
+    }
+
+    private fun changeButtonTextColor(color: Int) {
+        binding.albTv.setTextColor(color)
     }
 }

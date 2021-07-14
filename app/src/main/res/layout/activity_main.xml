@@ -21,16 +21,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:default_text="Login"
+        app:success_text="Yipee!"
         app:loading_text="Loading..."
         app:layout_constraintTop_toBottomOf="@+id/tv"
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/s_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop"
+        android:text="Success"
         app:layout_constraintTop_toBottomOf="@+id/alb_btn"
         android:gravity="center"/>
 
+    <Button
+        android:id="@+id/e_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fail"
+        app:layout_constraintTop_toBottomOf="@+id/s_btn"
+        android:gravity="center"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

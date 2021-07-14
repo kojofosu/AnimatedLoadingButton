@@ -11,15 +11,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn = findViewById<Button>(R.id.btn)
+        val sBtn = findViewById<Button>(R.id.s_btn)
+        val eBtn = findViewById<Button>(R.id.e_btn)
         val alb_btn = findViewById<ALBButton>(R.id.alb_btn)
 
-        alb_btn.setLoadingBgColor(R.color.purple_200)
-        alb_btn.setLoadingTextColor(Color.BLACK)
+        alb_btn.setLoadingTextColor(Color.WHITE)
         alb_btn.setLoadingText("Loading...")
 
-        btn.setOnClickListener {
+        alb_btn.setErrorText("Failed.")
+
+        sBtn.setOnClickListener {
             alb_btn.isSuccess()
+        }
+
+        eBtn.setOnClickListener {
+            alb_btn.isError()
         }
     }
 }
