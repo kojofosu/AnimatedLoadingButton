@@ -1,5 +1,6 @@
 package com.mcdev.sample
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,6 +13,10 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.btn)
         val alb_btn = findViewById<ALBButton>(R.id.alb_btn)
+
+        alb_btn.setLoadingBgColor(R.color.purple_200)
+        alb_btn.setLoadingTextColor(Color.BLACK)
+        alb_btn.setLoadingText("Get in!!!")
 
         btn.setOnClickListener {
             alb_btn.isSuccess()

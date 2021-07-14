@@ -34,6 +34,8 @@ class ALBButton @JvmOverloads constructor(context: Context,
     /*loading*/
     private var isButtonLoading : Boolean = false
     private var mLoadingText: String? = null
+    private var mLoadingBgColor: Int
+    private var mLoadingTextColor: Int
 
     /*success*/
     private var mButtonSuccessColor: Int = Color.GREEN
@@ -43,18 +45,20 @@ class ALBButton @JvmOverloads constructor(context: Context,
 
 
     init {
-        val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.ALBView, defStyle, defStyle)
+        val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.ALBButton, defStyle, defStyle)
        /*default*/
-        mDefaultText = attributes.getString(R.styleable.ALBView_default_text)
-        mDefaultBgColor = attributes.getColor(R.styleable.ALBView_default_bg_color, ContextCompat.getColor(context, R.color.design_default_color_primary))
-        mDefaultTextColor = attributes.getColor(R.styleable.ALBView_default_text_color, Color.WHITE)
+        mDefaultText = attributes.getString(R.styleable.ALBButton_default_text)
+        mDefaultBgColor = attributes.getColor(R.styleable.ALBButton_default_bg_color, ContextCompat.getColor(context, R.color.design_default_color_primary))
+        mDefaultTextColor = attributes.getColor(R.styleable.ALBButton_default_text_color, Color.WHITE)
 
         setDefaultText(mDefaultText)
         setDefaultBgColor(mDefaultBgColor)
         setDefaultTextColor(mDefaultTextColor)
 
         /*loading*/
-        mLoadingText = attributes.getString(R.styleable.ALBView_loading_text)
+        mLoadingText = attributes.getString(R.styleable.ALBButton_loading_text)
+        mLoadingBgColor = attributes.getColor(R.styleable.ALBButton_loading_bg_color, ContextCompat.getColor(context, R.color.design_default_color_primary))
+        mLoadingTextColor = attributes.getColor(R.styleable.ALBButton_loading_text_color, Color.WHITE)
 
         /*success*/
 
@@ -81,41 +85,48 @@ class ALBButton @JvmOverloads constructor(context: Context,
     private fun animateLoadingText(loadingText: String?) {
             Handler(Looper.getMainLooper()).postDelayed({
                 setLoadingText(loadingText)
-
-                startColorAnimation(binding.albBtnLayout, mDefaultBgColor, mButtonErrorColor)
+                binding.albTv.text = loadingText
+                binding.albTv.setTextColor(mLoadingTextColor)
+                changeButtonBgColor(mLoadingBgColor)
                 animateText(Techniques.BounceInDown)
             }, ANIMATION_DURATION)
     }
 
     fun setDefaultText(defaultText: String?) {
+        this.mDefaultText = defaultText
         binding.albTv.text = defaultText
     }
 
     fun setDefaultBgColor(color: Int) {
-        binding.albBtnLayout.setCardBackgroundColor(color)
+        this.mDefaultBgColor = color
+        changeButtonBgColor(color)
     }
 
     fun setDefaultTextColor(color: Int) {
+        this.mDefaultTextColor = color
         binding.albTv.setTextColor(color)
     }
 
     fun setLoadingText(loadingText: String?) {
-        binding.albTv.text = loadingText
+        this.mLoadingText = loadingText
+    }
+
+    fun setLoadingBgColor(color: Int) {
+        this.mLoadingBgColor = color
+    }
+
+    fun setLoadingTextColor(color: Int) {
+        this.mLoadingTextColor = color
     }
 
     fun isSuccess() {
         setDefaultText(mDefaultText)
         animateText(Techniques.BounceInUp)
-        startColorAnimation(binding.albBtnLayout, mDefaultBgColor, Color.GREEN)
+        changeButtonBgColor(mButtonSuccessColor)
         isButtonLoading = false
     }
 
-    private fun startColorAnimation(target: View, colorStart: Int, colorEnd : Int) {
-        val colorAnim: ValueAnimator = ObjectAnimator.ofInt(target, "backgroundColor", colorStart, colorEnd)
-        colorAnim.duration = ANIMATION_DURATION
-        colorAnim.setEvaluator(ArgbEvaluator())
-        colorAnim.repeatCount = 0
-        colorAnim.repeatMode = ValueAnimator.REVERSE
-        colorAnim.start()
+    private fun changeButtonBgColor(color: Int) {
+        binding.albBtnLayout.setCardBackgroundColor(color)
     }
 }

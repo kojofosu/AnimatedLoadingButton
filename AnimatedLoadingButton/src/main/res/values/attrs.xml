@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ALBView">
+    <declare-styleable name="ALBButton">
         <!--default-->
         <attr name="default_text" format="string"/>
         <attr name="default_bg_color" format="color"/>
