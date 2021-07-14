@@ -142,6 +142,18 @@ class ALBButton @JvmOverloads constructor(context: Context,
         this.mSuccessTextColor = color
     }
 
+    fun setErrorText(errorText: String?) {
+        this.mErrorText = errorText
+    }
+
+    fun setErrorBgColor(color: Int) {
+        this.mErrorBgColor = color
+    }
+
+    fun setErrorTextColor(color: Int) {
+        this.mErrorTextColor = color
+    }
+
     fun isSuccess() {
         setDefaultText(mDefaultText)
         animateText(Techniques.BounceInUp)
