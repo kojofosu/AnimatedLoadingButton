@@ -2,6 +2,10 @@
 
 ![Jit](https://img.shields.io/jitpack/v/github/kojofosu/AnimatedLoadingButton?style=for-the-badge) 
 
+🌠 An animated loading button.
+
+<img src="https://user-images.githubusercontent.com/20203694/125870149-d16fdb1a-849f-468f-b8c7-8b6f02c75ed7.gif" alt="demo"  width="700" />
+
 ## Setup
 
 Add it in your root `build.gradle` at the end of repositories:
