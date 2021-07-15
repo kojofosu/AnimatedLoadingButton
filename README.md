@@ -28,7 +28,7 @@ dependencies {
 ## Usage
 Sample implementation [here](app/)
 
-- Add `FilledBoxSpinner` in your layout xml file
+- Add `ALBButton` in your layout xml file
 ```xml
     <com.mcdev.animatedloadingbutton.ALBButton
         android:id="@+id/alb_btn"
@@ -55,6 +55,7 @@ Sample implementation [here](app/)
             override fun onClick(view: View) {
 
                 //write your loading or login listener
+
                 //if login or loading is successful, call albButton.isSuccess() method.
                 //if login or loading fails, call albButton.isError() method.
 
