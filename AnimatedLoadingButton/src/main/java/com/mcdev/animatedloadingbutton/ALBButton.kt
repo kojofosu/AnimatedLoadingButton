@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.RelativeLayout
@@ -23,7 +24,7 @@ class ALBButton @JvmOverloads constructor(context: Context,
     private var TAG = "ALBButton"
     private val ANIMATION_DURATION = 300L
     private val binding: ActivityAlbbuttonBinding = ActivityAlbbuttonBinding.inflate(LayoutInflater.from(context), this, true)
-    private val helper: Helper = Helper()
+    private var mOnClickListener: com.mcdev.animatedloadingbutton.OnClickListener? = null
 
 
     /*default*/
@@ -51,7 +52,8 @@ class ALBButton @JvmOverloads constructor(context: Context,
 
     init {
         val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.ALBButton, defStyle, defStyle)
-       /*default*/
+
+        /*default*/
         mDefaultText = attributes.getString(R.styleable.ALBButton_default_text)
         mDefaultBgColor = attributes.getColor(R.styleable.ALBButton_default_bg_color, ContextCompat.getColor(context, R.color.design_default_color_primary))
         mDefaultTextColor = attributes.getColor(R.styleable.ALBButton_default_text_color, Color.WHITE)
@@ -81,6 +83,7 @@ class ALBButton @JvmOverloads constructor(context: Context,
                 false -> {
                     animateText(Techniques.SlideOutDown)
                     animateLoadingText(mLoadingText)
+                    mOnClickListener?.onClick(this) //click listener is called only when button is not loading
                     isButtonLoading = true
                 }
             }
@@ -93,6 +96,7 @@ class ALBButton @JvmOverloads constructor(context: Context,
             .duration(ANIMATION_DURATION)
             .playOn(binding.albTv)
     }
+
     private fun animateLoadingText(loadingText: String?) {
             Handler(Looper.getMainLooper()).postDelayed({
                 setLoadingText(loadingText)
@@ -180,5 +184,35 @@ class ALBButton @JvmOverloads constructor(context: Context,
 
     private fun changeButtonTextColor(color: Int) {
         binding.albTv.setTextColor(color)
+    }
+
+    fun setOnClickListener(listener: com.mcdev.animatedloadingbutton.OnClickListener) {
+        this.mOnClickListener = listener
+    }
+
+    @Deprecated("unused")
+    private fun enableButton() {
+        when (isButtonLoading) {
+            false -> {
+                binding.albTv.background = with(TypedValue()) {
+                    context.theme.resolveAttribute(
+                        R.attr.selectableItemBackgroundBorderless, this, true)
+                    ContextCompat.getDrawable(context, resourceId)
+                }
+            }
+        }
+    }
+
+    @Deprecated("unused")
+    private fun disableButton() {
+        when (isButtonLoading) {
+            true -> {
+                binding.albTv.isClickable = false
+                binding.albTv.isFocusable = false
+                binding.albBtnLayout.isClickable = false
+                binding.albBtnLayout.isFocusable = false
+            }
+        }
+
     }
 }

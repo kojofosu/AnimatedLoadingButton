@@ -3,8 +3,11 @@ package com.mcdev.sample
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.mcdev.animatedloadingbutton.ALBButton
+import com.mcdev.animatedloadingbutton.OnClickListener
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,19 +16,26 @@ class MainActivity : AppCompatActivity() {
 
         val sBtn = findViewById<Button>(R.id.s_btn)
         val eBtn = findViewById<Button>(R.id.e_btn)
-        val alb_btn = findViewById<ALBButton>(R.id.alb_btn)
+        val albButton = findViewById<ALBButton>(R.id.alb_btn)
 
-        alb_btn.setLoadingTextColor(Color.WHITE)
-        alb_btn.setLoadingText("Loading...")
+        albButton.setLoadingTextColor(Color.WHITE)
+        albButton.setLoadingText("Loading...")
 
-        alb_btn.setErrorText("Failed.")
+        albButton.setErrorText("Failed.")
+
+        albButton.setOnClickListener(object: OnClickListener{
+            override fun onClick(view: View) {
+                Toast.makeText(this@MainActivity, "End point" , Toast.LENGTH_LONG).show()
+            }
+
+        })
 
         sBtn.setOnClickListener {
-            alb_btn.isSuccess()
+            albButton.isSuccess()
         }
 
         eBtn.setOnClickListener {
-            alb_btn.isError()
+            albButton.isError()
         }
     }
 }

@@ -45,20 +45,20 @@ Sample implementation [here](app/)
 - you call `isSuccess()` to activate success button and `isError()` to activate error button.
 
 ```kotlin
-        val alb_btn = findViewById<ALBButton>(R.id.alb_btn)
-        val sBtn = findViewById<Button>(R.id.s_btn)
-        val eBtn = findViewById<Button>(R.id.e_btn)
+        val albButton = findViewById<ALBButton>(R.id.alb_btn)
 
-        alb_btn.setLoadingTextColor(Color.WHITE)
-        alb_btn.setLoadingText("Loading...")
+        albButton.setLoadingTextColor(Color.WHITE)
+        albButton.setLoadingText("Loading...")
+        albButton.setErrorText("Failed.")
 
-        alb_btn.setErrorText("Failed.")
+        albButton.setOnClickListener(object: OnClickListener{
+            override fun onClick(view: View) {
 
-        sBtn.setOnClickListener {
-            alb_btn.isSuccess()
-        }
+                //write your loading or login listener
+                //if login or loading is successful, call albButton.isSuccess() method.
+                //if login or loading fails, call albButton.isError() method.
 
-        eBtn.setOnClickListener {
-            alb_btn.isError()
-        }
+            }
+        })
+
 ```
